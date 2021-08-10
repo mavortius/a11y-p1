@@ -1,11 +1,26 @@
-<main>
-  <h1>Form</h1>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <app-yes-no-button-group
-      [appDisabledControl]="false"
-      label="Are you good enough in Angular?"
-      formControlName="yesNoAnswer">
-    </app-yes-no-button-group>
-    <button>Submit</button>
-  </form>
-</main>
+<h1>Accessible Modal Component</h1>
+
+<p>Welcome to the accessible modal testing page!</p>
+<button class="button button-primary" type="button" (click)="showModal()">Show modal</button>
+
+<ng-template #modal>
+  <div class="form-field">
+    <label for="first-name">First name</label>
+    <input id="first-name" type="text" [(ngModel)]="firstName">
+  </div>
+
+  <div class="form-field">
+    <label for="surname">Surname</label>
+    <input id="surname" type="text">
+  </div>
+
+  <div class="form-field">
+    <label for="age">Age</label>
+    <input id="age" type="text">
+  </div>
+
+  <div class="button-group">
+    <button class="button button-primary" type="button">Submit</button>
+    <button class="button button-secondary" type="button" (click)="modalRef.close()">Cancel</button>
+  </div>
+</ng-template>

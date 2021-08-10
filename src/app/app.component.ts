@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+
+import { ModalRef, ModalService } from './shared/components/modal/modal.service';
 
 @Component({
   selector: 'app-root',
@@ -7,19 +8,25 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'a11y-p1';
-  form: FormGroup = null;
+  @ViewChild('modal') modalTemplateRef: TemplateRef<any>;
+  firstName = 'Marcelo';
+  modalRef: ModalRef;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private modalService: ModalService) {
   }
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      yesNoAnswer: [{ value: null, disabled: false}]
-    });
+
   }
 
   onSubmit(): void {
-    console.log(this.form.value);
+
+  }
+
+  showModal(): void {
+    this.modalRef = this.modalService.open({
+      ref: this.modalTemplateRef,
+      title: 'User Details'
+    });
   }
 }

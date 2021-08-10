@@ -1,7 +1,7 @@
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { UniqueIdService } from '../../services/unique-id/unique-id.service';
+import { UniqueIdService } from '../../services/unique-id.service';
 
 enum YesNoButtonGroupOptions {
   YES = 'yes',
