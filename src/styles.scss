@@ -27,14 +27,25 @@ body {
 
   font-weight: 400;
 
+
   &.button-primary {
     background-color: #0056B3;
     color: #fff;
+
+    &.disabled {
+      background-color: lightgrey;
+      cursor: not-allowed;
+    }
   }
 
   &.button-secondary {
     background-color: #6c757d;
     color: #fff;
+
+    &.disabled {
+      background-color: lightgrey;
+      cursor: not-allowed;
+    }
   }
 }
 
@@ -56,6 +67,7 @@ body {
 
 .validation-error {
   display: inline-block;
-  color: red;
   margin-top: 0.5rem;
+  color: red;
+  font-size: 0.8rem;
 }

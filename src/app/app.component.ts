@@ -28,6 +28,9 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit(): void {
+    if (this.form.invalid) {
+      return;
+    }
     console.log(this.form.value);
     this.modalRef.close();
   }
