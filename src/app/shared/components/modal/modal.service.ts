@@ -3,15 +3,7 @@ import { ComponentFactory, ComponentFactoryResolver, ComponentRef, Injectable, I
 import { ModalConfig } from './modal-config';
 import { ModalComponent } from './modal.component';
 import { BodyInjectorService } from '../../services/body-injector.service';
-
-export class ModalRef {
-  constructor(private componentRef: ComponentRef<ModalComponent>) {
-  }
-
-  close(): void {
-    this.componentRef.destroy();
-  }
-}
+import { ModalRef } from './modal-ref';
 
 @Injectable()
 export class ModalService {
@@ -27,7 +19,9 @@ export class ModalService {
     const componentRef = this.createComponentRef();
     componentRef.instance.config = config;
     this.bodyInjector.stackBeforeAppRoot(componentRef);
-    return new ModalRef(componentRef);
+    const modalRef = new ModalRef(componentRef);
+    componentRef.instance.modalRef = modalRef;
+    return modalRef;
   }
 
   private createComponentRef(): ComponentRef<ModalComponent> {
